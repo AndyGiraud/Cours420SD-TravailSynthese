@@ -32,8 +32,8 @@ sysBloque = False
 detecteurOn = True
 alarme = False
 sysActive = False
-#LCD1602.init(0x27,1)
-#LCD1602.clear()
+LCD1602.init(0x27,1)
+LCD1602.clear()
 tentativeCode = 0
 #création de la BD
 BD.creationBdTable()   
@@ -90,8 +90,8 @@ class Interface:
         #quand le sensor detecte un mouvement et que le système est enclenché
         if evenementArrive == Constante.motion:
             
-            #LCD1602.write(0, 0, 'Entrer le code')
-            #LCD1602.write(0, 1, code)
+            LCD1602.write(0, 0, 'Entrer le code')
+            LCD1602.write(0, 1, code)
             time.sleep(1)
         
         #quand on desactive le systme on clear le LCD et on insère l'évenemnt dans la BD    
@@ -100,23 +100,23 @@ class Interface:
             connexion = BD.connexionBD()
             BD.insertionDonnees(evenement, connexion)
             BD.fermerBD(connexion)
-            #LCD1602.clear()
-            #LCD1602.write(0, 0, 'System disabled')
+            LCD1602.clear()
+            LCD1602.write(0, 0, 'System disabled')
         
         #quand on desactive le systme on clear le LCD et on insère l'évenemnt dans la BD       
         elif evenementArrive == Constante.activation:
             connexion = BD.connexionBD()
             BD.insertionDonnees(evenement, connexion)
             BD.fermerBD(connexion)
-            #LCD1602.clear()
-            #LCD1602.write(0, 0, 'System enabled')
+            LCD1602.clear()
+            LCD1602.write(0, 0, 'System enabled')
         
         elif evenementArrive == Constante.blocked:
             connexion = BD.connexionBD()
             BD.insertionDonnees(evenement,connexion)
             BD.fermerBD(connexion)
-            #LCD1602.clear()
-            #LCD1602.write(0, 0, 'Acces blocked')
+            LCD1602.clear()
+            LCD1602.write(0, 0, 'Acces blocked')
         
         else:
             connexion = BD.connexionBD()
